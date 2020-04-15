@@ -1,31 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import deckContainer from './components/deck_container.js'
-import packContainer from './components/pack_container.js'
+import DeckContainer from './components/deck_container.js'
+import PackContainer from './components/pack_container.js'
+import {getPacks} from './actions.js'
+import {connect} from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <h3>Let's Draft!</h3>
-      <packContainer />
-      <deckContainer />
-      // <header className="App-header">
-      //   <img src={logo} className="App-logo" alt="logo" />
-      //   <p>
-      //     Edit <code>src/App.js</code> and save to reload.
-      //   </p>
-      //   <a
-      //     className="App-link"
-      //     href="https://reactjs.org"
-      //     target="_blank"
-      //     rel="noopener noreferrer"
-      //   >
-      //     Learn React
-      //   </a>
-      // </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.getPacks()
+  }
+  render() {
+    console.log("hi")
+    return (
+      <div className="App">
+        <h3>Let's Draft!</h3>
+        <PackContainer />
+        <DeckContainer />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {getPacks: () => dispatch(getPacks())}
+}
+
+export default connect(((state) => ({packs: state.packs})), mapDispatchToProps)(App)

@@ -3,16 +3,20 @@ import {connect} from 'react-redux'
 import {draftCard} from '../actions.js'
 
 
-class packContainer {
+	// <button onClick = (event) => this.props.dispatch(draftCard(event.target))>
 
-
+class Card extends React.Component {
+	render() {
+		return (
+			<img src={this.props.card}
+		)
+	}
 }
 
 const getPropsFromState = (state) => {
 	return {current_pack: state.current_pack}
 }
 
-export default connect(getPropsFromState)(packContainer)
+export default connect(getPropsFromState)(Card)
 
 
-	onClick = (event) => this.props.dispatch(draftCard(event.target))

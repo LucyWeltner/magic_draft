@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import magicReducer from './reducers/magicReducer.js'
 
-store = createStore(magicReducer, applyMiddleware(thunk))
+let store = createStore(magicReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>

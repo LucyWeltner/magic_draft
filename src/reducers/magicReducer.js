@@ -1,4 +1,3 @@
-import React from 'react'
 
 export default function magicReducer(state={deck: [], packs: [], current_pack: [], turn: 0}, action) {
 	switch (action.type) {
@@ -15,7 +14,7 @@ export default function magicReducer(state={deck: [], packs: [], current_pack: [
 		case 'draft_card':
 			let currentPackCopy = state.current_pack.slice()
 			let index = state.current_pack.findIndex(card => card.id === action.card.id)
-			return {...state, current_pack: [currentPackCopy.splice(index, 1)] deck: [...state.deck, action.card]}
+			return {...state, current_pack: [currentPackCopy.splice(index, 1)], deck: [...state.deck, action.card]}
 		default:
 			return state
 	}

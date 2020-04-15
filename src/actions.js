@@ -1,6 +1,6 @@
 export const getPacks = () => {
 	return (dispatch) => {
-		fetch('localhost:3000/cards/packs').then(response => response.json()).then(packs => dispatch({action: 'get_packs', packs}))
+		fetch('http://localhost:3000/cards/packs').then(response => response.json()).then(packs => dispatch({type: 'get_packs', packs}))
 	}
 }
 
