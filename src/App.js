@@ -10,7 +10,6 @@ class App extends React.Component {
     this.props.getPacks()
   }
   render() {
-    console.log("hi")
     return (
       <div className="App">
         <h3>Let's Draft!</h3>

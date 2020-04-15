@@ -4,8 +4,8 @@ export const getPacks = () => {
 	}
 }
 
-export const draftCard = (card) => {
-	return {type: 'draft_card', card: card}
+export const draftCard = (name) => {
+	return {type: 'draft_card', name: name}
 }
 
 export const nextPack = () => {

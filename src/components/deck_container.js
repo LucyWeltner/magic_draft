@@ -7,7 +7,7 @@ class DeckContainer extends React.Component {
 		return(
 			<div>
 				<p>Deck Goes Here</p>
-				<div>{this.props.deck.map(card => <Card />)}</div>
+				<div>{this.props.deck.map((card, index) => <Card card={card} key={index}/>)}</div>
 			</div>
 		)
 	}
