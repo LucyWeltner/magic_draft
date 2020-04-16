@@ -6,15 +6,21 @@ export default function magicReducer(state={deck: [], packs: [], current_pack: [
 		case 'next_pack':
 			let newPacks = state.packs.map((pack, index) => {
 				if (index !== (state.turn - 1)%6) {
-					let number = Math.floor(Math.random*pack.length)
-					pack.splice(number, 1)
-					return pack
+					let found = pack.find((card) => card.rarity === "rare" || card.rarity === "mythic rare")
+					if (found) {
+						return pack.filter((card) => card.rarity !== "rare" && card.rarity !=="mythic rare")
+					}
+					else {
+						let number = Math.floor(Math.random*pack.length)
+						let packCopy = pack.slice()
+						packCopy.splice(number, 1)
+						return packCopy
+					}
 				}
 				else {
 					return pack
 				}
 			})
-			console.log(newPacks)
 			return {...state, packs: newPacks, current_pack: newPacks[state.turn%6]}
 		case 'draft_card':
 			let currentPackCopy = state.current_pack.slice()
