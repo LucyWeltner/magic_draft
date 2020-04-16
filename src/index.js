@@ -8,8 +8,9 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import magicReducer from './reducers/magicReducer.js'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import DecksContainer from './components.create_card_container.js'
 import Homepage from './components/homepage.js'
+import DecksContainer from './components/decks_container.js'
+
 
 
 let store = createStore(magicReducer, applyMiddleware(thunk))
@@ -19,9 +20,9 @@ ReactDOM.render(
   	<Provider store = {store}>
   		<Router>
   			<React.Fragment>
-  				<Route path="/" component={Homepage}/>
+  				<Route exact path="/" component={Homepage}/>
     			<Route exact path="/draft" component={App} />
-    			<Route exact path="/create" component={CreateCardContainer} />
+    			<Route exact path="/decks" component={DecksContainer} />
     		</React.Fragment>
     	</Router>
     </Provider>
