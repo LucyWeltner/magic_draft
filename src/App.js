@@ -4,6 +4,7 @@ import DeckContainer from './components/deck_container.js'
 import PackContainer from './components/pack_container.js'
 import {getPacks} from './actions.js'
 import {connect} from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class App extends React.Component {
   componentDidMount() {

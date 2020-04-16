@@ -3,9 +3,15 @@ export default function magicReducer(state={deck: [], packs: [], current_pack: [
 	switch (action.type) {
 		case 'get_packs':
 			return {...state, packs: action.packs, current_pack: action.packs[0]}
-		case 'next_pack':
+		case 'draft_card':
+			// find and remove the card the user just drafted from its pack
+			let currentPackCopy = state.current_pack.slice()
+			let index = state.current_pack.findIndex(card => card.name === action.name)
+			let card = state.current_pack.find(card => card.name === action.name)
+			currentPackCopy.splice(index, 1)
+			// Remove random cards from the packs the user did not just pick from
 			let newPacks = state.packs.map((pack, index) => {
-				if (index !== (state.turn - 1)%6) {
+				if (index !== (state.turn)%6) {
 					let found = pack.find((card) => card.rarity === "rare" || card.rarity === "mythic rare")
 					if (found) {
 						return pack.filter((card) => card.rarity !== "rare" && card.rarity !=="mythic rare")
@@ -18,16 +24,10 @@ export default function magicReducer(state={deck: [], packs: [], current_pack: [
 					}
 				}
 				else {
-					return pack
+					return currentPackCopy
 				}
 			})
-			return {...state, packs: newPacks, current_pack: newPacks[state.turn%6]}
-		case 'draft_card':
-			let currentPackCopy = state.current_pack.slice()
-			let index = state.current_pack.findIndex(card => card.name === action.name)
-			let card = state.current_pack.find(card => card.name === action.name)
-			currentPackCopy.splice(index, 1)
-			return {turn: state.turn + 1, packs: [...state.packs.slice(0, state.turn%6), currentPackCopy, ...state.packs.slice(state.turn%6+1)], current_pack: currentPackCopy, deck: [...state.deck, card]}
+			return {turn: state.turn + 1, packs: newPacks, current_pack: newPacks[state.turn%5+1], deck: [...state.deck, card]}
 		default:
 			return state
 	}

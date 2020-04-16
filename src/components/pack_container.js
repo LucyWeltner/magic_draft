@@ -6,6 +6,7 @@ import Card from './card.js'
 class PackContainer extends React.Component {
 	render() {
 		console.log(this.props.packs)
+		console.log(this.props.turn)
 		return (
 			<div>
 				<p>Pack Goes Here</p>
