@@ -23,11 +23,11 @@ export const saveDeck = (deck) => {
 		let configObj = {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
 				"Accept": "application/json"
-			}
+			},
 			body: JSON.stringify(deck)
 		}
-		fetch('http://localhost:3000/cards/', configObj).then(response => response.json()).then(json => console.log(json)).catch(error => alert("There was a problem saving your deck. Please try again."))
+		fetch('http://localhost:3000/decks', configObj).then(response => response.json()).then(json => console.log(json)).catch(error => alert("There was a problem saving your deck. Please try again."))
 	}
 }

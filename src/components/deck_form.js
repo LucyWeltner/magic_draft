@@ -1,15 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {saveDeck} from '../actions.js'
 
 class DeckForm extends React.Component {
 	state = {
-		name: ""
+		name: "",
 		comments: ""
 	}
 	handleChange = (event) => {
 		let obj = {}
 		obj[`${event.target.name}`] = event.target.value
-		this.setState(obj)
+		this.setState(obj, () => console.log(this.state))
 	}
 
 	handleSubmit = (event) => {
@@ -21,13 +22,16 @@ class DeckForm extends React.Component {
 	}
 
 	render() {
+		return(
 		<form onSubmit = {this.handleSubmit}>
 			<p>Name of Deck:</p>
 			<input type="text" name="name" onChange={this.handleChange} />
 			<p>Comments:</p>
 			<input type="text" name="comments" onChange={this.handleChange} />
-			<input type="submit">Save Deck</input>
+			<br />
+			<input type="submit" value="Save Deck"/>
 		</form>
+		)
 	}
 
 }
