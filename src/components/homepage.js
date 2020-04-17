@@ -1,4 +1,5 @@
 import React from 'react'
+import DeckForm from './deck_form.js'
 
 export default class Homepage extends React.Component {
 	render() {

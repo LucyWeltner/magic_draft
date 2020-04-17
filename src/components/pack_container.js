@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Card from './card.js'
+import DeckForm from './deck_form.js'
 import {getPacks, saveDeck} from '../actions.js'
 
 class PackContainer extends React.Component {
@@ -19,7 +20,7 @@ class PackContainer extends React.Component {
 		else {
 			return (
 				<div>
-					{(this.state.packs_counter < 2) ? (<p><button onClick = {() => {this.props.getPacks(); this.state.packs_counter += 1}}>Next Set of Packs</button></p>) : (<p>You're Done! Would you like to save your deck?</p> <button onClick = {() => this.props.saveDeck(this.props.deck)}>Save Deck</button>)}
+					{(this.state.packs_counter < 2) ? (<p><button onClick = {() => {this.props.getPacks(); this.state.packs_counter += 1}}>Next Set of Packs</button></p>) : (<div><p>You're Done! Would you like to save your deck?</p> <DeckForm /></div>)}
 				</div>
 			)
 		}
@@ -27,7 +28,7 @@ class PackContainer extends React.Component {
 }
 
 const getPropsFromState = (state) => {
-	return {current_pack: state.current_pack, packs: state.packs, deck: state.deck}
+	return {current_pack: state.current_pack, packs: state.packs}
 }
 
 const getPropsFromDispatch = (dispatch) => {
