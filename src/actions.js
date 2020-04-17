@@ -28,6 +28,10 @@ export const saveDeck = (deck) => {
 			},
 			body: JSON.stringify(deck)
 		}
-		fetch('http://localhost:3000/decks', configObj).then(response => response.json()).then(json => console.log(json)).catch(error => alert("There was a problem saving your deck. Please try again."))
+		fetch('http://localhost:3000/decks', configObj).then(response => response.json()).then(json => console.log(json))
+		.catch(error => {
+    		alert("Something went wrong trying to save your deck")
+    		console.log(error.message)
+  		})
 	}
 }

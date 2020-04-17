@@ -2,7 +2,7 @@
 export default function magicReducer(state={deck: [], packs: [], current_pack: [], turn: 0, decks: []}, action) {
 	switch (action.type) {
 		case 'get_packs':
-			return {...state, packs: action.packs, current_pack: action.packs[0]}
+			return {...state, packs: action.packs, current_pack: action.packs[0], turn: 0}
 		case 'get_decks':
 			return {...state, decks: action.decks}
 		case 'draft_card':

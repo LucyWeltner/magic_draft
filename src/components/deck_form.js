@@ -15,6 +15,7 @@ class DeckForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
+		console.log(this.props.deck)
 		let deck_info = {name: this.state.name, comments: this.state.comments, cards: this.props.deck}
 		console.log(deck_info)
 		this.props.saveDeck(deck_info)
