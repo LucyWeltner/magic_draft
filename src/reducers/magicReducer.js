@@ -1,8 +1,10 @@
 
-export default function magicReducer(state={deck: [], packs: [], current_pack: [], turn: 0}, action) {
+export default function magicReducer(state={deck: [], packs: [], current_pack: [], turn: 0, decks: []}, action) {
 	switch (action.type) {
 		case 'get_packs':
 			return {...state, packs: action.packs, current_pack: action.packs[0]}
+		case 'get_decks':
+			return {...state, decks: action.decks}
 		case 'draft_card':
 			// find and remove the card the user just drafted from its pack
 			let currentPackCopy = state.current_pack.slice()
@@ -27,7 +29,7 @@ export default function magicReducer(state={deck: [], packs: [], current_pack: [
 					return currentPackCopy
 				}
 			})
-			return {turn: state.turn + 1, packs: newPacks, current_pack: newPacks[state.turn%5+1], deck: [...state.deck, card]}
+			return {...state, turn: state.turn + 1, packs: newPacks, current_pack: newPacks[state.turn%5+1], deck: [...state.deck, card]}
 		default:
 			return state
 	}

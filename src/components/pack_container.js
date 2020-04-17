@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Card from './card.js'
-import {getPacks} from '../actions.js'
+import {getPacks, saveDeck} from '../actions.js'
 
 class PackContainer extends React.Component {
 	state= {packs_counter: 0}
@@ -19,7 +19,7 @@ class PackContainer extends React.Component {
 		else {
 			return (
 				<div>
-					{(this.state.packs_counter < 2) ? (<p><button onClick = {() => {this.props.getPacks(); this.state.packs_counter += 1}}>Next Set of Packs</button></p>) : (<p>You're Done!</p>)}
+					{(this.state.packs_counter < 2) ? (<p><button onClick = {() => {this.props.getPacks(); this.state.packs_counter += 1}}>Next Set of Packs</button></p>) : (<p>You're Done! Would you like to save your deck?</p> <button onClick = {() => this.props.saveDeck(this.props.deck)}>Save Deck</button>)}
 				</div>
 			)
 		}
@@ -27,11 +27,11 @@ class PackContainer extends React.Component {
 }
 
 const getPropsFromState = (state) => {
-	return {current_pack: state.current_pack, turn: state.turn, packs: state.packs}
+	return {current_pack: state.current_pack, packs: state.packs, deck: state.deck}
 }
 
 const getPropsFromDispatch = (dispatch) => {
-	return {getPacks: () => dispatch(getPacks())}
+	return {getPacks: () => dispatch(getPacks()), saveDeck: (deck) => dispatch(saveDeck(deck))}
 }
 
 export default connect(getPropsFromState, getPropsFromDispatch)(PackContainer)
