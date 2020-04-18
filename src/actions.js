@@ -35,3 +35,17 @@ export const saveDeck = (deck) => {
   		})
 	}
 }
+
+export const deleteCard = (deck_id, card_id) => {
+	return (dispatch) => {
+		let configObj = {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				"Accepts": "application/json"
+			},
+			body: JSON.stringify({card_id: card_id})
+		}
+		fetch(`http://localhost:3000/decks/${deck_id}/cards/${card_id}`, configObj)
+	}
+}

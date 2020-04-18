@@ -20,7 +20,9 @@ class PackContainer extends React.Component {
 		else {
 			return (
 				<div>
-					{(this.state.packs_counter < 2) ? (<p><button onClick = {() => {this.props.getPacks(); this.state.packs_counter += 1}}>Next Set of Packs</button></p>) : (<div><p>You're Done! Would you like to save your deck?</p> <DeckForm /></div>)}
+					{(this.state.packs_counter < 2) ? 
+						(<p><button onClick = {() => {this.props.getPacks(); this.setState(prevState => ({packs_counter: prevState.packs_counter + 1}))}} >Next Set of Packs</button></p>) : 
+						(<div><p>You're Done! Would you like to save your deck?</p> <DeckForm /></div>)}
 				</div>
 			)
 		}

@@ -21,7 +21,7 @@ ReactDOM.render(
   		<Router>
   			<React.Fragment>
   				<Route exact path="/" component={Homepage}/>
-    			<Route exact path="/draft" component={App} />
+    			<Route exact path="/decks/new" component={App} />
     			<Route exact path="/decks" component={DecksContainer} />
     		</React.Fragment>
     	</Router>
