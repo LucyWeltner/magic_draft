@@ -11,17 +11,24 @@ class Card extends React.Component {
 	handleRemove = (event) => {
 		this.props.removeCard(this.props.card.id)
 		let button = event.target
-		console.log(button)
 		button.parentNode.remove()
 	}
 	render() {
-		return (
-			<div>
-				<img src={this.props.card.image_url} alt={this.props.card.name} name={this.props.card.name} style={{height: "200px"}} onClick={(event) => this.handleClick(event)} />
-				<br />
-				<button onClick={this.handleRemove}>Remove Card From Deck</button>
-			</div>
-		)
+		if (this.props.removeCard) {
+			return (
+				<div class="card">
+					<img src={this.props.card.image_url} alt={this.props.card.name} name={this.props.card.name} class="card-img" />
+					<br />
+					<button onClick={this.handleRemove}>Remove Card From Deck</button>
+				</div>
+			)
+		}
+		else {
+			return (
+				<img src={this.props.card.image_url} alt={this.props.card.name} name={this.props.card.name} class="card-img" onClick={(event) => this.handleClick(event)} />
+			)
+		}
+
 	}
 }
 

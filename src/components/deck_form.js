@@ -20,7 +20,7 @@ class DeckForm extends React.Component {
 		console.log(deck_info)
 		this.props.saveDeck(deck_info)
 		this.setState({name: "", comments: ""})
-		window.location = "http://localhost:3000/decks"
+		window.location = "/decks"
 	}
 
 	render() {

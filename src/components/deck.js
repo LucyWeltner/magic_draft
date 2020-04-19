@@ -16,7 +16,7 @@ export default class Deck extends React.Component {
 
 	render() {
 		return (
-			<div id={this.props.deck.id}>
+			<div id={this.props.deck.id} class="deck">
 				<h3>Name of Deck: {this.props.deck.name}</h3>
 				<p><b>Comments:</b> {this.props.deck.comments}</p>
 				<h3>Cards:</h3>
