@@ -11,7 +11,6 @@ class PackContainer extends React.Component {
 		if (this.props.current_pack.length > 0 && this.state.packs_counter < 3) {
 			return (
 				<div>
-					<p>Pack Goes Here</p>
 					<div id="cards">{this.props.current_pack.map((card, index) => <Card key={index} card={card}/>)}</div>
 					<p></p>
 				</div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Deck from './deck.js'
+import Header from './header.js'
 
 export default class DecksContainer extends React.Component {
 	state = {
@@ -12,7 +13,7 @@ export default class DecksContainer extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h2>Decks Go Here</h2>
+				<Header />
 				{this.state.decks.map(deck => <Deck key={deck.id} deck={deck}/>)}
 			</React.Fragment>
 		)
