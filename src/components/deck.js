@@ -21,9 +21,9 @@ export default class Deck extends React.Component {
 		return (
 			<div id={this.props.deck.id} class="deck">
 				<h3>Name of Deck: {this.props.deck.name}</h3>
-				<p><b>Comments:</b> {this.props.deck.comments}</p>
+				<h3>Comments:</h3> <span>{this.props.deck.comments}</span>
 				<h3>Cards:</h3>
-				{cards.map((card, index) => <Card card={card} key={index} removeCard={this.removeCard}/>)}
+				{cards.length <= 0 ? ("No Cards") : (cards.map((card, index) => <Card card={card} key={index} removeCard={this.removeCard}/>))}
 			</div>
 		)
 	}

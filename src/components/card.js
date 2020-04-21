@@ -25,7 +25,7 @@ class Card extends React.Component {
 		}
 		else {
 			return (
-				<img src={this.props.card.image_url} alt={this.props.card.name} name={this.props.card.name} class="card-img" onClick={(event) => this.handleClick(event)} />
+				<img src={this.props.card.image_url} alt={this.props.card.name} name={this.props.card.name} style={{height: "200px"}} onClick={(event) => this.handleClick(event)} />
 			)
 		}
 
