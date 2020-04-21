@@ -15,12 +15,15 @@ export default class Deck extends React.Component {
 	}
 
 	render() {
+		let commons = this.props.deck.cards.filter(card => card.rarity === "common")
+		let comAndUncom = commons.concat(this.props.deck.cards.filter(card => card.rarity === "uncommon"))
+		let cards = comAndUncom.concat(this.props.deck.cards.filter(card => card.rarity === "rare" || card.rarity === "mythic rare"))
 		return (
 			<div id={this.props.deck.id} class="deck">
 				<h3>Name of Deck: {this.props.deck.name}</h3>
 				<p><b>Comments:</b> {this.props.deck.comments}</p>
 				<h3>Cards:</h3>
-				{this.props.deck.cards.map((card, index) => <Card card={card} key={index} removeCard={this.removeCard}/>)}
+				{cards.map((card, index) => <Card card={card} key={index} removeCard={this.removeCard}/>)}
 			</div>
 		)
 	}

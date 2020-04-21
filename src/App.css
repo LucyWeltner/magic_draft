@@ -1,16 +1,16 @@
 .card {
   display: inline-block;
   float: left;
+  width: 100px;
+  height: 240px;
 }
 
 .card-img{
-    position: relative;
-    z-index: 1;
-    height: 200px;
+  position: relative;
+  height: 200px;
 }
 .card-img:hover {
-  position: relative;
-  z-index: 2;
+  z-index: 1;
   height: 400px;
 }
 
