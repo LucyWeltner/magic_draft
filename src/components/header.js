@@ -3,10 +3,10 @@ import React from 'react'
 export default class Header extends React.Component {
 	render() {
 		return (
-			<div class="header">
-				<img src="https://miro.medium.com/max/1400/1*I9FzTNOaLYgXnsAT-qPUeA.jpeg" class="header-img" id="archonfs"/>
-				<img src="https://miro.medium.com/max/2400/0*nzS3B9uuwJQxms1i.jpg" class="header-img" id="archona"/>
-				<img src="https://miro.medium.com/max/1252/0*ICgXUC-c3fBu42lY.jpg" class="header-img" id="harchon"/>
+			<div className="header">
+				<img src="https://miro.medium.com/max/1400/1*I9FzTNOaLYgXnsAT-qPUeA.jpeg" alt="Archon of the Falling Stars" className="header-img" id="archonfs"/>
+				<img src="https://miro.medium.com/max/2400/0*nzS3B9uuwJQxms1i.jpg" alt="Archon of Absolution" className="header-img" id="archona"/>
+				<img src="https://miro.medium.com/max/1252/0*ICgXUC-c3fBu42lY.jpg" alt="Harmonious Archon" className="header-img" id="harchon"/>
 				<h2 id="header-text"><b>Doin' Some Magic</b></h2>
 				<nav><a href="/decks/new"><i>Draft A Deck</i></a><span>   </span><a href="/decks"><i>See Your Decks</i></a></nav>
 			</div>

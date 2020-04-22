@@ -18,20 +18,4 @@ export const nextPack = () => {
 	return {type: 'next_pack'}
 }
 
-export const saveDeck = (deck) => {
-	return (dispatch) => {
-		let configObj = {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Accept": "application/json"
-			},
-			body: JSON.stringify(deck)
-		}
-		fetch('http://localhost:3000/decks', configObj).then(response => response.json()).then(json => console.log(json))
-		.catch(error => {
-    		alert("Something went wrong trying to save your deck")
-    		console.log(error.message)
-  		})
-	}
-}
+

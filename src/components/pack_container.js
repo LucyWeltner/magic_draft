@@ -2,12 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Card from './card.js'
 import DeckForm from './deck_form.js'
-import {getPacks, saveDeck} from '../actions.js'
+import {getPacks} from '../actions.js'
 
 class PackContainer extends React.Component {
 	state= {packs_counter: 0}
 	render() {
-		console.log(this.props.packs)
 		if (this.props.current_pack.length > 0 && this.state.packs_counter < 3) {
 			return (
 				<div>
@@ -33,7 +32,7 @@ const getPropsFromState = (state) => {
 }
 
 const getPropsFromDispatch = (dispatch) => {
-	return {getPacks: () => dispatch(getPacks()), saveDeck: (deck) => dispatch(saveDeck(deck))}
+	return {getPacks: () => dispatch(getPacks())}
 }
 
 export default connect(getPropsFromState, getPropsFromDispatch)(PackContainer)

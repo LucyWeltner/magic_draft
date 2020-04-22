@@ -8,7 +8,7 @@ export default class DecksContainer extends React.Component {
 	}
 	componentDidMount() {
 		fetch('http://localhost:3000/decks').then(response => response.json())
-		.then(decks => this.setState({decks}, () => console.log(this.state)))
+		.then(decks => this.setState({decks}))
 	}
 	render() {
 		return (

@@ -1,12 +1,27 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {saveDeck} from '../actions.js'
 
 class DeckForm extends React.Component {
 	state = {
 		name: "",
 		comments: ""
 	}
+
+	saveDeck = (deck) => {
+		let configObj = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json"
+			},
+			body: JSON.stringify(deck),
+		}
+		fetch('http://localhost:3000/decks', configObj).then(response => response.json()).then(json => console.log(json)).then(() => window.location.replace("/decks"))
+		.catch(error => {
+    		alert(`There was an error ${error.message}`)
+  		})
+	}
+
 	handleChange = (event) => {
 		let obj = {}
 		obj[`${event.target.name}`] = event.target.value
@@ -15,12 +30,9 @@ class DeckForm extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault()
-		console.log(this.props.deck)
 		let deck_info = {name: this.state.name, comments: this.state.comments, cards: this.props.deck}
-		console.log(deck_info)
-		this.props.saveDeck(deck_info)
+		this.saveDeck(deck_info)
 		this.setState({name: "", comments: ""})
-		window.location = "/decks"
 	}
 
 	render() {
@@ -42,8 +54,4 @@ const getPropsFromState = (state) => {
 	return {deck: state.deck}
 }
 
-const getPropsFromDispatch = (dispatch) => {
-	return {saveDeck: (deck) => dispatch(saveDeck(deck))}
-}
-
-export default connect(getPropsFromState, getPropsFromDispatch)(DeckForm)
+export default connect(getPropsFromState)(DeckForm)

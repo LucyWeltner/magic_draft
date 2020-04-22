@@ -11,7 +11,7 @@ export default class Deck extends React.Component {
 			},
 			body: JSON.stringify({card_id: card_id})
 		}
-		fetch(`http://localhost:3000/decks/${this.props.deck.id}/card_in_decks/${card_id}`, configObj)
+		fetch(`http://localhost:3000/decks/${this.props.deck.id}/card_in_decks/${card_id}`, configObj).then(() => console.log("hi"))
 	}
 
 	render() {
